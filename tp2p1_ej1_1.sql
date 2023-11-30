@@ -1,0 +1,1 @@
+SELECT DISTINCT id_tarea FROM voluntario;
