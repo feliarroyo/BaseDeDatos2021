@@ -1,0 +1,47 @@
+DROP TABLE IF EXISTS tp3_trabaja_en;
+DROP TABLE IF EXISTS tp3_auspicio;
+DROP TABLE IF EXISTS tp3_proyecto;
+DROP TABLE IF EXISTS tp3_empleado;
+
+CREATE TABLE tp3_empleado (
+	tipoE char NOT NULL,
+	nroE int NOT NULL,
+	nombre varchar NOT NULL,
+	cargo varchar NOT NULL,
+	CONSTRAINT pk_empleado PRIMARY KEY (tipoE, nroE)
+);
+
+CREATE TABLE tp3_proyecto (
+	idProy int NOT NULL,
+	nombreProy varchar[40] NOT NULL,
+	anioComienzo int NOT NULL,
+	anioFinal int,
+	CONSTRAINT pk_tp3_proyecto PRIMARY KEY (idProy)
+);
+
+CREATE TABLE tp3_trabaja_en (
+	empleado_tipoE char NOT NULL,
+	empleado_nroE int NOT NULL,
+	proyecto_idProy int NOT NULL,
+	anio int NOT NULL,
+	mes	int NOT NULL,
+	cant_horas int NOT NULL,
+	tarea int NOT NULL,
+	CONSTRAINT pk_trabajaEn	PRIMARY KEY (empleado_tipoE, empleado_nroE, proyecto_idProy, anio, mes)
+);
+
+CREATE TABLE tp3_auspicio (
+	proyecto_idProy int NOT NULL,
+	nombreAuspiciante varchar[40] NOT NULL,
+	empleado_tipoE char,
+	empleado_nroE int,
+	CONSTRAINT pk_auspicio PRIMARY KEY (proyecto_idProy, nombreAuspiciante)
+);
+
+INSERT INTO tp3_empleado(tipoE, nroE, nombre, cargo) VALUES ('A', 1, '...', '...');
+INSERT INTO tp3_empleado(tipoE, nroE, nombre, cargo) VALUES ('B', 2, '...', '...');
+INSERT INTO tp3_empleado(tipoE, nroE, nombre, cargo) VALUES ('A', 2, '...', '...');
+INSERT INTO tp3_trabaja_en(empleado_tipoE, empleado_nroE, proyecto_idProy, anio, mes, cant_horas, tarea) VALUES ('A', 1, 1, 0, 0, 0, 0);
+INSERT INTO tp3_trabaja_en(empleado_tipoE, empleado_nroE, proyecto_idProy, anio, mes, cant_horas, tarea) VALUES ('A', 2, 2, 0, 0, 0, 0);
+
+
